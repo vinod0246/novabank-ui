@@ -1,1 +1,130 @@
-<p>accounts works!</p>
+<div class="accounts-page">
+
+  <nav class="navbar">
+    <h1>🏦 NovaBank</h1>
+    <button class="back-btn" (click)="goBack()">
+      ← Back to Dashboard
+    </button>
+  </nav>
+
+  <div class="content">
+
+    <div class="tabs">
+      <button
+        [class]="activeTab === 'create' ? 'tab active' : 'tab'"
+        (click)="setTab('create')">
+        🏧 Create Account
+      </button>
+      <button
+        [class]="activeTab === 'deposit' ? 'tab active' : 'tab'"
+        (click)="setTab('deposit')">
+        💰 Deposit Money
+      </button>
+      <button
+        [class]="activeTab === 'view' ? 'tab active' : 'tab'"
+        (click)="setTab('view')">
+        📋 All Accounts
+      </button>
+    </div>
+
+    <div class="success" *ngIf="message">✅ {{ message }}</div>
+    <div class="error" *ngIf="errorMessage">❌ {{ errorMessage }}</div>
+
+    <!-- Create Account Tab -->
+    <div class="card" *ngIf="activeTab === 'create'">
+      <h2>🏧 Create New Account</h2>
+
+      <div class="form-group">
+        <label>Owner Name</label>
+        <input
+          type="text"
+          [(ngModel)]="newAccount.ownerName"
+          placeholder="Enter full name"
+          class="form-control"/>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          [(ngModel)]="newAccount.email"
+          placeholder="Enter email"
+          class="form-control"/>
+      </div>
+
+      <div class="form-group">
+        <label>Account Type</label>
+        <select [(ngModel)]="newAccount.accountType"
+          class="form-control">
+          <option value="SAVINGS">Savings</option>
+          <option value="CURRENT">Current</option>
+        </select>
+      </div>
+
+      <button class="primary-btn" (click)="createAccount()">
+        Create Account
+      </button>
+    </div>
+
+    <!-- Deposit Money Tab -->
+    <div class="card" *ngIf="activeTab === 'deposit'">
+      <h2>💰 Deposit Money</h2>
+
+      <div class="form-group">
+        <label>Select Account</label>
+        <select [(ngModel)]="deposit.accountNumber"
+          class="form-control">
+          <option value="">Select account</option>
+          <option *ngFor="let acc of accounts"
+            [value]="acc.accountNumber">
+            {{ acc.accountNumber }} - {{ acc.ownerName }}
+            (${{ acc.balance }})
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Amount ($)</label>
+        <input
+          type="number"
+          [(ngModel)]="deposit.amount"
+          placeholder="Enter amount"
+          class="form-control"/>
+      </div>
+
+      <button class="primary-btn green" (click)="depositMoney()">
+        💰 Deposit Money
+      </button>
+    </div>
+
+    <!-- All Accounts Tab -->
+    <div class="card" *ngIf="activeTab === 'view'">
+      <h2>📋 All Accounts</h2>
+
+      <div *ngIf="accounts.length === 0" class="empty">
+        No accounts found. Create one first!
+      </div>
+
+      <div class="account-list">
+        <div class="account-card" *ngFor="let acc of accounts">
+          <div class="acc-left">
+            <div class="acc-icon">🏦</div>
+            <div>
+              <h4>{{ acc.ownerName }}</h4>
+              <p>{{ acc.accountNumber }}</p>
+              <span class="badge">{{ acc.accountType }}</span>
+            </div>
+          </div>
+          <div class="acc-right">
+            <div class="balance">${{ acc.balance }}</div>
+            <button class="delete-btn"
+              (click)="deleteAccount(acc.id)">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

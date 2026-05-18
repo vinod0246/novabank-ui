@@ -1,1 +1,139 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>🏦 NovaBank</h1>
+    <div class="nav-right">
+      <span>Welcome, {{ username }}!</span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+      <div class="summary-card blue">
+        <div class="summary-icon">🏧</div>
+        <div class="summary-info">
+          <h3>Total Accounts</h3>
+          <p>{{ accounts.length }}</p>
+        </div>
+      </div>
+
+      <div class="summary-card blue">
+        <div class="summary-icon">💰</div>
+        <div class="summary-info">
+          <h3>Total Balance</h3>
+          <p>${{ totalBalance }}</p>
+        </div>
+      </div>
+
+      <div class="summary-card blue">
+        <div class="summary-icon">💸</div>
+        <div class="summary-info">
+          <h3>Total Transactions</h3>
+          <p>{{ transactions.length }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="section">
+      <h2>Quick Actions</h2>
+      <div class="action-cards">
+
+        <div class="action-card" (click)="goToAccounts()">
+          <div class="action-icon">🏧</div>
+          <h3>Manage Accounts</h3>
+          <p>Create and view bank accounts</p>
+          <button class="action-btn">Go to Accounts →</button>
+        </div>
+
+        <div class="action-card" (click)="goToTransactions()">
+          <div class="action-icon">💸</div>
+          <h3>Send Money</h3>
+          <p>Transfer money between accounts</p>
+          <button class="action-btn">Go to Transactions →</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Account Details -->
+    <div class="section">
+      <h2>My Accounts</h2>
+      <div *ngIf="accounts.length === 0" class="empty">
+        No accounts yet —
+        <span class="link" (click)="goToAccounts()">
+          Create one!
+        </span>
+      </div>
+      <div class="account-list">
+        <div class="account-card" *ngFor="let acc of accounts">
+          <div class="account-left">
+            <div class="account-icon">🏦</div>
+            <div>
+              <h4>{{ acc.ownerName }}</h4>
+              <p>{{ acc.accountNumber }}</p>
+              <span class="badge">{{ acc.accountType }}</span>
+            </div>
+          </div>
+          <div class="account-balance">
+            ${{ acc.balance }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="section">
+      <h2>Recent Transactions</h2>
+      <div *ngIf="transactions.length === 0" class="empty">
+        No transactions yet —
+        <span class="link" (click)="goToTransactions()">
+          Make a transfer!
+        </span>
+      </div>
+      <div class="transaction-list">
+        <div class="transaction-card" *ngFor="let tx of transactions">
+          <div class="tx-left">
+            <div class="tx-icon">💸</div>
+            <div>
+              <h4>{{ tx.description || 'Transfer' }}</h4>
+              <p>{{ tx.fromAccountNumber }} → {{ tx.toAccountNumber }}</p>
+              <small>{{ tx.transactionDate | date:'short' }}</small>
+            </div>
+          </div>
+          <div class="tx-right">
+            <div class="tx-amount">${{ tx.amount }}</div>
+            <span [class]="tx.status === 'SUCCESS' ?
+              'badge-success' : 'badge-failed'">
+              {{ tx.status }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Microservices Status -->
+    <div class="section">
+      <h2>Microservices Status</h2>
+      <div class="services">
+        <div class="service-item">
+          <span class="dot green"></span>
+          Auth Service — port 8081
+        </div>
+        <div class="service-item">
+          <span class="dot green"></span>
+          Account Service — port 8082
+        </div>
+        <div class="service-item">
+          <span class="dot green"></span>
+          Transaction Service — port 8083
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
