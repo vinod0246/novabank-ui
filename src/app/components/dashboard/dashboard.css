@@ -280,3 +280,12 @@
   font-weight: 600;
   text-decoration: underline;
 }
+
+.logo-link {
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.logo-link:hover {
+  opacity: 0.8;
+}
