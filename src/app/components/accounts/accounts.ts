@@ -26,7 +26,7 @@ export class Accounts implements OnInit {
 
   deposit = {
     accountNumber: '',
-    amount: 0
+    amount: 0 as number | null
   };
 
   constructor(
@@ -106,4 +106,8 @@ export class Accounts implements OnInit {
   goBack() {
     this.router.navigate(['/dashboard']);
   }
+  goHome(){
+  this.router.navigate(['/dashboard']);
 }
+}
+

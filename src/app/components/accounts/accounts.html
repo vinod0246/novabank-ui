@@ -1,7 +1,7 @@
 <div class="accounts-page">
 
   <nav class="navbar">
-    <h1>🏦 NovaBank</h1>
+    <h1 class="logo-link" (click)="goHome()">🏦 NovaBank</h1>
     <button class="back-btn" (click)="goBack()">
       ← Back to Dashboard
     </button>
@@ -88,8 +88,11 @@
         <input
           type="number"
           [(ngModel)]="deposit.amount"
-          placeholder="Enter amount"
-          class="form-control"/>
+          placeholder="0"
+          class="form-control"
+          min="1"
+          (focus)="deposit.amount = deposit.amount === 0 ? null : deposit.amount"
+          (blur)="deposit.amount = !deposit.amount ? 0 : deposit.amount"/>
       </div>
 
       <button class="primary-btn green" (click)="depositMoney()">

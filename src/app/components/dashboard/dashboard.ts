@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AccountService } from '../../services/account';
 import { TransactionService } from '../../services/transaction';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +22,8 @@ export class Dashboard implements OnInit {
   constructor(
     private router: Router,
     private accountService: AccountService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -52,7 +54,12 @@ export class Dashboard implements OnInit {
   goToTransactions() { this.router.navigate(['/transactions']); }
 
   logout() {
-    localStorage.clear();
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  goHome() {
+  this.router.navigate(['/dashboard']);
 }
+}
+

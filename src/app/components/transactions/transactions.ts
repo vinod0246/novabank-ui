@@ -22,7 +22,7 @@ export class Transactions implements OnInit {
   transfer = {
     fromAccount: '',
     toAccount: '',
-    amount: 0,
+    amount: 0 as number | null,
     description: ''
   };
 
@@ -91,4 +91,9 @@ export class Transactions implements OnInit {
   goBack() {
     this.router.navigate(['/dashboard']);
   }
+
+  goHome() {
+  this.router.navigate(['/dashboard']);
 }
+}
+
