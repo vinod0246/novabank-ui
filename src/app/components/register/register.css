@@ -1,12 +1,12 @@
-.login-container {
+.register-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
 }
 
-.login-box {
+.register-box {
   background: white;
   padding: 40px;
   border-radius: 12px;
@@ -16,7 +16,7 @@
 
 .logo {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .logo h1 {
@@ -32,7 +32,7 @@
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .form-group label {
@@ -48,7 +48,7 @@
   padding: 12px;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 14px;
   box-sizing: border-box;
   transition: border-color 0.3s;
 }
@@ -58,7 +58,7 @@
   border-color: #0f3460;
 }
 
-.login-btn {
+.register-btn {
   width: 100%;
   padding: 13px;
   background: #0f3460;
@@ -69,40 +69,46 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s;
+  margin-top: 10px;
 }
 
-.login-btn:hover {
+.register-btn:hover {
   background: #e94560;
+}
+
+.register-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
 }
 
 .error {
   color: #e94560;
   font-size: 13px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-.hint {
+.success {
+  color: #4caf50;
+  font-size: 13px;
+  margin-bottom: 10px;
   text-align: center;
-  color: #aaa;
-  font-size: 12px;
-  margin-top: 15px;
 }
 
-.register-link {
+.login-link {
   text-align: center;
   color: #888;
   font-size: 13px;
   margin-top: 15px;
 }
 
-.register-link span {
+.login-link span {
   color: #0f3460;
-  font-weight: 600;
   cursor: pointer;
+  font-weight: 600;
   text-decoration: underline;
 }
 
-.register-link span:hover {
+.login-link span:hover {
   color: #e94560;
 }
