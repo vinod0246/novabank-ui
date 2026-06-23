@@ -27,7 +27,8 @@ export class Dashboard implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.username = localStorage.getItem('username') || 'User';
+    this.username = 
+      localStorage.getItem('username') || 'User';
     this.loadAccounts();
     this.loadTransactions();
   }
@@ -52,14 +53,11 @@ export class Dashboard implements OnInit {
 
   goToAccounts() { this.router.navigate(['/accounts']); }
   goToTransactions() { this.router.navigate(['/transactions']); }
+  goToProfile() { this.router.navigate(['/profile']); }
+  goHome() { this.router.navigate(['/dashboard']); }
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-
-  goHome() {
-  this.router.navigate(['/dashboard']);
 }
-}
-

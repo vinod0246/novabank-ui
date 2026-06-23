@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -44,4 +45,13 @@ export class AuthService {
   logout() {
     localStorage.clear();
   }
+
+getProfile(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/profile`);{
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.getToken()}`
+      })
+    }
+  }
+ 
 }

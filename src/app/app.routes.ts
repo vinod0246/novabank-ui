@@ -4,6 +4,7 @@ import { Dashboard } from './components/dashboard/dashboard';
 import { Accounts } from './components/accounts/accounts';
 import { Transactions } from './components/transactions/transactions';
 import { Register } from './components/register/register';
+import { Profile } from './components/profile/profile';
 import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
@@ -23,6 +24,11 @@ export const routes: Routes = [
   {
     path: 'transactions',
     component: Transactions,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'profile',
+    component: Profile,
     canActivate: [authGuard]
   }
 ];
