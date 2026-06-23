@@ -27,8 +27,12 @@
       </button>
     </div>
 
-    <div class="success" *ngIf="message">✅ {{ message }}</div>
-    <div class="error" *ngIf="errorMessage">❌ {{ errorMessage }}</div>
+    <div class="success" *ngIf="message">
+      ✅ {{ message }}
+    </div>
+    <div class="error" *ngIf="errorMessage">
+      ❌ {{ errorMessage }}
+    </div>
 
     <!-- Create Account Tab -->
     <div class="card" *ngIf="activeTab === 'create'">
@@ -109,13 +113,16 @@
       </div>
 
       <div class="account-list">
-        <div class="account-card" *ngFor="let acc of accounts">
+        <div class="account-card"
+          *ngFor="let acc of accounts">
           <div class="acc-left">
             <div class="acc-icon">🏦</div>
             <div>
               <h4>{{ acc.ownerName }}</h4>
               <p>{{ acc.accountNumber }}</p>
-              <span class="badge">{{ acc.accountType }}</span>
+              <span class="badge">
+                {{ acc.accountType }}
+              </span>
             </div>
           </div>
           <div class="acc-right">
