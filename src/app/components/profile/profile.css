@@ -1,171 +1,90 @@
-.profile-page {
-  min-height: 100vh;
-  background: #f0f2f5;
+.change-password-section {
+  padding: 25px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.navbar {
+.change-pwd-btn {
   background: #0f3460;
   color: white;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar h1 {
-  margin: 0;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.back-btn {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  padding: 8px 16px;
-  border-radius: 6px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-}
-
-.content {
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-}
-
-.profile-card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  width: 500px;
-  overflow: hidden;
-}
-
-.avatar-section {
-  background: linear-gradient(135deg, #0f3460, #16213e);
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.avatar {
-  width: 80px;
-  height: 80px;
-  background: #e94560;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 36px;
-  font-weight: 700;
-  margin: 0 auto 15px;
-}
-
-.avatar-section h2 {
-  margin: 0 0 10px;
-  font-size: 24px;
-}
-
-.role-badge {
-  background: #e94560;
-  padding: 4px 16px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.details-section {
-  padding: 25px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.detail-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 12px 0;
-  border-bottom: 1px solid #f9f9f9;
-}
-
-.detail-icon { font-size: 24px; width: 40px; }
-
-.detail-label {
-  margin: 0;
-  color: #888;
-  font-size: 12px;
-}
-
-.detail-value {
-  margin: 4px 0 0;
-  color: #333;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.summary-section {
-  padding: 25px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.summary-section h3 {
-  color: #0f3460;
-  margin: 0 0 15px;
-}
-
-.summary-cards {
-  display: flex;
-  gap: 15px;
-}
-
-.summary-card {
-  flex: 1;
-  background: #f8f9fa;
-  padding: 15px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.summary-icon { font-size: 30px; }
-
-.summary-label {
-  margin: 0;
-  color: #888;
-  font-size: 12px;
-}
-
-.summary-value {
-  margin: 4px 0 0;
-  color: #0f3460;
-  font-weight: 700;
-  font-size: 20px;
-}
-
-.logout-btn {
+  font-size: 14px;
   width: 100%;
-  padding: 15px;
+}
+
+.change-pwd-btn:hover {
   background: #e94560;
+}
+
+.change-pwd-form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #0f3460;
+}
+
+.save-pwd-btn {
+  background: #4caf50;
   color: white;
   border: none;
-  font-size: 16px;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
 }
 
-.logout-btn:hover { background: #c73652; }
-
-.loading {
-  text-align: center;
-  padding: 50px;
-  color: #888;
-  font-size: 18px;
+.save-pwd-btn:hover {
+  background: #388e3c;
 }
 
-.error {
+.save-pwd-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.pwd-error {
   background: #fce4ec;
   color: #e94560;
-  padding: 15px 20px;
+  padding: 10px 15px;
   border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.pwd-success {
+  background: #e8f5e9;
+  color: #4caf50;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
 }
