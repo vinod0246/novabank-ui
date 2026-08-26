@@ -47,11 +47,22 @@ export class AuthService {
   }
 
 getProfile(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/profile`);{
+  const token = this.getToken();
+  console.log('Token being sent:', token);
+  return this.http.get(`${this.apiUrl}/profile`, {
+    headers: new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+  });
+}
+ 
+  changePassword(data: any): Observable<any> {
+  return this.http.put(
+    `${this.apiUrl}/change-password`, data, {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${this.getToken()}`
       })
-    }
-  }
- 
+    });
 }
+}
+

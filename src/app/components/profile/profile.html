@@ -21,6 +21,7 @@
 
     <div *ngIf="!loading" class="profile-card">
 
+      <!-- Avatar Section -->
       <div class="avatar-section">
         <div class="avatar">
           {{ username.charAt(0).toUpperCase() }}
@@ -29,6 +30,7 @@
         <span class="role-badge">{{ role }}</span>
       </div>
 
+      <!-- Details Section -->
       <div class="details-section">
         <div class="detail-item">
           <span class="detail-icon">👤</span>
@@ -53,6 +55,7 @@
         </div>
       </div>
 
+      <!-- Account Summary -->
       <div class="summary-section">
         <h3>Account Summary</h3>
         <div class="summary-cards">
@@ -77,6 +80,63 @@
         </div>
       </div>
 
+      <!-- Change Password Section -->
+      <div class="change-password-section">
+        <button class="change-pwd-btn"
+          (click)="toggleChangePassword()">
+          🔑 {{ showChangePassword ? 
+            'Cancel' : 'Change Password' }}
+        </button>
+
+        <div *ngIf="showChangePassword" 
+          class="change-pwd-form">
+
+          <div class="form-group">
+            <label>Current Password</label>
+            <input
+              type="password"
+              [(ngModel)]="currentPassword"
+              placeholder="Enter current password"
+              class="form-control"/>
+          </div>
+
+          <div class="form-group">
+            <label>New Password</label>
+            <input
+              type="password"
+              [(ngModel)]="newPassword"
+              placeholder="Enter new password"
+              class="form-control"/>
+          </div>
+
+          <div class="form-group">
+            <label>Confirm New Password</label>
+            <input
+              type="password"
+              [(ngModel)]="confirmPassword"
+              placeholder="Confirm new password"
+              class="form-control"/>
+          </div>
+
+          <div class="pwd-error" *ngIf="passwordError">
+            ❌ {{ passwordError }}
+          </div>
+
+          <div class="pwd-success" 
+            *ngIf="passwordSuccess">
+            ✅ {{ passwordSuccess }}
+          </div>
+
+          <button class="save-pwd-btn"
+            (click)="changePassword()"
+            [disabled]="passwordLoading">
+            {{ passwordLoading ? 
+              'Changing...' : 'Save New Password' }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Logout Button -->
       <button class="logout-btn" (click)="logout()">
         🚪 Logout
       </button>
